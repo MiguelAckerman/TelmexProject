@@ -2,6 +2,7 @@ package POJO;
 
 public class PojoCatalogoFalla {
 	
+	@SuppressWarnings("unused")
 	private int id;
 	private String codigo;
 	private String descripción;
@@ -18,7 +19,6 @@ public class PojoCatalogoFalla {
 	public void setDescripción(String descripción) {
 		this.descripción = descripción;
 	}
-
 	
 	
 }
