@@ -1,6 +1,6 @@
 package POJO;
 
-public class PojoCatalogoFalla {
+public class CatalogoFalla {
 	
 	@SuppressWarnings("unused")
 	private int id;
