@@ -38,5 +38,8 @@ public class ModeloPersonal {
 		}
 		return x;
 	}
+	
+
+	
 
 }

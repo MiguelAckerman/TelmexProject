@@ -15,18 +15,18 @@ public class ConexionPSQL {
 	public static Connection getModeloConexion()
 	{
 		
-		server = "5432//localhost/TF_01";
+		server = "“jdbc:postgresql://localhost:5432/TF_01";
 		user   = "postgres";
 		pass   = "pgadmin";
-		driver = "com.mysql.jdbc.Driver";
+		driver = "org.postgresql.Driver";
 	
-		
 		Connection conexion = null;
 		
 		try
 		{
-			Class.forName(driver).newInstance();
-			conexion = (Connection) DriverManager.getConnection(server,user,pass);	
+			//Class.forName(driver).newInstance();
+			Class.forName(driver);
+			conexion = DriverManager.getConnection(server,user,pass);	
 		}
 		catch (SQLException SQLe)
 		{
