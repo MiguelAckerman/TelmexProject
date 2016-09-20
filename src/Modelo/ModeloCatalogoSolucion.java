@@ -92,7 +92,7 @@ public class ModeloCatalogoSolucion {
 		{	
 			Statement consultaDatos = conexion.getModeloConexion().createStatement();
 			
-			ResultSet resultados = consultaDatos.executeQuery("SELECT codigoFalla, descripcionFalla FROM catalogoFalla WHERE codigoFalla = " + codigo);
+			ResultSet resultados = consultaDatos.executeQuery("SELECT codigoFalla, descripcionFalla FROM catalogoFalla WHERE codigoFalla = '" + codigo + "'");
 			//EN UN RESULTSET GUARDAMOS EL RESULTADO DEL QUERY 
 			
 			while(resultados.next())//RECORREMOS CADA RENGLON QUE NOS REGRESA EL QUERY
