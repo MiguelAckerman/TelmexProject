@@ -7,11 +7,13 @@ import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
 
 import BaseDatos.ConexionPSQL;
+import BaseDatos.ConexionSQL;
 import POJO.Usuario;
 
 public class ModeloUsuario {
 	
-	private ConexionPSQL conexion = new ConexionPSQL();
+	//private ConexionPSQL conexion = new ConexionPSQL();
+	private ConexionSQL conexion = new ConexionSQL();
 	public int x = 0;
 	
 	@SuppressWarnings({ "static-access", "unused" })

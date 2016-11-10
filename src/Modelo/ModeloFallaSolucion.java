@@ -7,11 +7,13 @@ import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
 
 import BaseDatos.ConexionPSQL;
+import BaseDatos.ConexionSQL;
 import POJO.Orden;
 
 public class ModeloFallaSolucion {
 	
-	private ConexionPSQL conexion = new ConexionPSQL();
+	//private ConexionPSQL conexion = new ConexionPSQL();
+	private ConexionSQL conexion = new ConexionSQL();
 	public int x = 0;
 	
 	@SuppressWarnings({ "static-access", "unused" })
@@ -42,7 +44,7 @@ public class ModeloFallaSolucion {
 	@SuppressWarnings("static-access")
 	public DefaultTableModel tablaCatEquipo()
 	{
-		String columnas [] = {"Codigo","Exp. Empleado","No inventario Equipo","Codigo Falla","Codigo Solución"};
+		String columnas [] = {"Codigo","Exp. Empleado","No inventario Equipo","Codigo Falla","Codigo Soluciï¿½n"};
 		
 		DefaultTableModel catalogoEquipo = new DefaultTableModel(null, columnas);
 		

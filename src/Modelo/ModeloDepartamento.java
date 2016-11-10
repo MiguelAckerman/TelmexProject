@@ -3,15 +3,18 @@ package Modelo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import javax.swing.table.DefaultTableModel;
+
 import BaseDatos.ConexionPSQL;
+import BaseDatos.ConexionSQL;
 import POJO.Departamento;
 
 public class ModeloDepartamento {
 	
 	private Departamento depto = new Departamento();
-	//private ConexionPhpMyAdmin con = new ConexionPhpMyAdmin();
-	private ConexionPSQL conexion = new ConexionPSQL();
+	private ConexionSQL conexion = new ConexionSQL();
+	//private ConexionPSQL conexion = new ConexionPSQL();
 	private int x;
 	
 	@SuppressWarnings({ "static-access", "unused" })

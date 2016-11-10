@@ -3,19 +3,20 @@ package Modelo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import javax.swing.table.DefaultTableModel;
-import BaseDatos.ConexionPSQL;
+
+import BaseDatos.ConexionSQL;
 import POJO.Equipo;
 
 public class ModeloEquipo {
-	
-	private Equipo equipo = new Equipo();
-	//private ConexionPhpMyAdmin con = new ConexionPhpMyAdmin();
-	private ConexionPSQL conexion = new ConexionPSQL();
+
+	private ConexionSQL conexion = new ConexionSQL();
+
 	private int x;
 	
 	@SuppressWarnings({ "static-access", "unused" })
-	private int agregarEquipo(){
+	public int agregarEquipo(Equipo equipo){
 		x = 0;
 		
 		if(conexion != null){
@@ -34,8 +35,9 @@ public class ModeloEquipo {
 				e.printStackTrace();
 			}
 			
+		} else {
+			return x;
 		}
-		
 		return x;
 	}//METOD PARA DAR DE ALTA UN EQUIPO
 	
@@ -113,7 +115,7 @@ public class ModeloEquipo {
 	public String [] consultaDatos(int noIn)
 	{
 
-		String [] datos = new String [1];
+		String [] datos = new String [5];
 		
 		if(conexion != null)
 		{
@@ -121,26 +123,50 @@ public class ModeloEquipo {
 			{
 				Statement consulta = conexion.getModeloConexion().createStatement();
 				
-				ResultSet rs = consulta.executeQuery("SELECT noinventarioequipo FROM Equipo WHERE noinventarioequipo = "+noIn);
+				ResultSet rs = consulta.executeQuery("SELECT * FROM Equipo WHERE noinventarioequipo = "+noIn);
 				
 				while(rs.next())
 				{
-					datos[0]=rs.getString("noinventarioequipo");
+					datos[0]=rs.getString("noInventarioEquipo");
+					datos[1]=rs.getString("tipoEquipo");
+					datos[2]=rs.getString("noSerieEquipo");
+					datos[3]=rs.getString("marcaEquipo");
+					datos[4]=rs.getString("modeloEquipo");
+					//datos[6]=rs.getString("codigoDepartamento");
+					
 				}
 				return datos;
-				
 			}
 			catch (SQLException e) 
 			{
 				e.printStackTrace();
 			}
-			
 		}
 		return null;
 	}
 	
+	@SuppressWarnings({ "static-access", "unused" })
+	public int eliminarEquipo(int id) {
+		
+		if (conexion != null){
+		
+			try {
+				
+				Statement elimina = conexion.getModeloConexion().createStatement();
+				
+				int a = elimina.executeUpdate("DELETE FROM Equipo WHERE id = " + id);
+				
+				x = 1;
+				return x;
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} else {
+			return x;
+		}
+		return x;
+	}
 	
-	
-	/* noinventarioequipo tipoequipo noserieequipo marcaequipo modeloequipo*/
 	
 }

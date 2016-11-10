@@ -9,6 +9,7 @@ public class Equipo {
 	private String noSerie;
 	private String marca;
 	private String modelo;
+	
 	public String getNoInventario() {
 		return noInventario;
 	}

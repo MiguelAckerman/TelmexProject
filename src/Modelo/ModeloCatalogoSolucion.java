@@ -7,12 +7,14 @@ import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
 
 import BaseDatos.ConexionPSQL;
+import BaseDatos.ConexionSQL;
 import POJO.CatalogoSolucion;
 
 public class ModeloCatalogoSolucion {
 	
 	
-	private ConexionPSQL conexion = new ConexionPSQL();
+	//private ConexionPSQL conexion = new ConexionPSQL();
+	private ConexionSQL conexion = new ConexionSQL();
 	private int x;
 	
 	@SuppressWarnings({ "static-access", "unused" })
@@ -25,7 +27,7 @@ public class ModeloCatalogoSolucion {
 				
 				Statement alta = conexion.getModeloConexion().createStatement();
 				
-				int a = alta.executeUpdate("INSERT INTO catalogoSoluciones (codigoSolucion,descripcionSolucion) VALUES ('"+catSo.getCodigo()+"', '"+catSo.getDescripción()+"')");
+				int a = alta.executeUpdate("INSERT INTO catalogoSoluciones (codigoSolucion,descripcionSolucion) VALUES ('"+catSo.getCodigo()+"', '"+catSo.getDescripcion()+"')");
 				
 				x = 1;
 				
@@ -39,12 +41,12 @@ public class ModeloCatalogoSolucion {
 			return x;
 		}
 		return x;
-	}//FINALIZA METODO OARA DAR DE ALTA UNA SOLUCIÓN
+	}//FINALIZA METODO OARA DAR DE ALTA UNA SOLUCIï¿½N
 	
 	@SuppressWarnings("static-access")
 	public DefaultTableModel tablaCatSolucion()
 	{
-		String columnas [] = {"Codigo","Descripción"};
+		String columnas [] = {"Codigo","DescripciÃ³n"};
 		//CREAMOS UN AREGLO CON Strings LOS CUALES REPRESENTAN LA CABECERA DE LAS COLUMNAS EN LA TABLA
 		
 		DefaultTableModel catalogoFalla = new DefaultTableModel(null, columnas);
@@ -79,7 +81,7 @@ public class ModeloCatalogoSolucion {
 	@SuppressWarnings("static-access")
 	public DefaultTableModel tablaCatSolucionPorCodigo(String codigo)
 	{
-		String columnas [] = {"Codigo","Descripción"};
+		String columnas [] = {"Codigo","DescripciÃ³n"};
 		//CREAMOS UN AREGLO CON Strings LOS CUALES REPRESENTAN LA CABECERA DE LAS COLUMNAS EN LA TABLA
 		
 		DefaultTableModel catalogoFalla = new DefaultTableModel(null, columnas);
@@ -138,7 +140,7 @@ public class ModeloCatalogoSolucion {
 			
 		}
 		return null;
-	}//REGRESAMOS LA DESCRIPCIÓN DE LA FALLA SEGUN SEA EL CODIGO POR EL CUAL SE BUSCA
+	}//REGRESAMOS LA DESCRIPCIï¿½N DE LA FALLA SEGUN SEA EL CODIGO POR EL CUAL SE BUSCA
 
 	
 }

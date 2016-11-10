@@ -7,13 +7,14 @@ import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
 
 import BaseDatos.ConexionPSQL;
+import BaseDatos.ConexionSQL;
 //import BaseDatos.ConexionPhpMyAdmin;
 import POJO.CatalogoFalla;
 
 public class ModeloCatalogoFallas {
 	
-	//private ConexionPhpMyAdmin conexion = new ConexionPhpMyAdmin();
-	private ConexionPSQL conexion = new ConexionPSQL();
+	private ConexionSQL conexion = new ConexionSQL();
+	//private ConexionPSQL conexion = new ConexionPSQL();
 	
 	private int x;
 	
@@ -27,12 +28,12 @@ public class ModeloCatalogoFallas {
 				
 				Statement alta = conexion.getModeloConexion().createStatement();
 				
-				int a = alta.executeUpdate("INSERT INTO CatalogoFalla(codigofalla,descripcionfalla) VALUES('"+pFalla.getCodigo()+"','"+pFalla.getDescripción()+"')");
+				int a = alta.executeUpdate("INSERT INTO Catalogo_Falla(codigo_falla,descripcion_falla) VALUES('"+pFalla.getCodigo()+"','"+pFalla.getDescripcion()+"')");
 				
 				x = 1;
 				
 				return x;
-				//SI HUBO CONEXIÓN Y SE EJECUTO EL QUERY CON EXITO
+				//SI HUBO CONEXIï¿½N Y SE EJECUTO EL QUERY CON EXITO
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -43,14 +44,14 @@ public class ModeloCatalogoFallas {
 			//SI NO SE EJECUTO EL QUERY
 		}
 		return x;
-		//SI NO HUBO CONEXIÓN
+		//SI NO HUBO CONEXIï¿½N
 	}
 	//FINALIZA METODO PARA DAR DE ALTA UN COCEPTO EN EL CATALOGO DE FALLAS
 	
 	@SuppressWarnings("static-access")
 	public DefaultTableModel tablaCatFalla()
 	{
-		String columnas [] = {"Codigo","Descripción"};
+		String columnas [] = {"Codigo","Descripciï¿½n"};
 		//CREAMOS UN AREGLO CON Strings LOS CUALES REPRESENTAN LA CABECERA DE LAS COLUMNAS EN LA TABLA
 		
 		DefaultTableModel catalogoFalla = new DefaultTableModel(null, columnas);
@@ -85,7 +86,7 @@ public class ModeloCatalogoFallas {
 	@SuppressWarnings("static-access")
 	public DefaultTableModel tablaCatFallaPorCodigo(String codigo)
 	{
-		String columnas [] = {"Codigo","Descripción"};
+		String columnas [] = {"Codigo","Descripciï¿½n"};
 		//CREAMOS UN AREGLO CON Strings LOS CUALES REPRESENTAN LA CABECERA DE LAS COLUMNAS EN LA TABLA
 		
 		DefaultTableModel catalogoFalla = new DefaultTableModel(null, columnas);
@@ -144,6 +145,6 @@ public class ModeloCatalogoFallas {
 			
 		}
 		return null;
-	}//REGRESAMOS LA DESCRIPCIÓN DE LA FALLA SEGUN SEA EL CODIGO POR EL CUAL SE BUSCA
+	}//REGRESAMOS LA DESCRIPCIï¿½N DE LA FALLA SEGUN SEA EL CODIGO POR EL CUAL SE BUSCA
 	
 }

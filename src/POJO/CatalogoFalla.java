@@ -5,7 +5,7 @@ public class CatalogoFalla {
 	@SuppressWarnings("unused")
 	private int id;
 	private String codigo;
-	private String descripción;
+	private String descripcion;
 	
 	public String getCodigo() {
 		return codigo;
@@ -13,11 +13,11 @@ public class CatalogoFalla {
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
-	public String getDescripción() {
-		return descripción;
+	public String getDescripcion() {
+		return descripcion;
 	}
-	public void setDescripción(String descripción) {
-		this.descripción = descripción;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	
 	

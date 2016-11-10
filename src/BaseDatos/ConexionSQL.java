@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConexionPhpMyAdmin {
+public class ConexionSQL {
 	
 	private static String server;
 	private static String user;
@@ -14,11 +14,10 @@ public class ConexionPhpMyAdmin {
 	public static Connection getModeloConexion()
 	{
 		
-		server = "jdbc:mysql://localhost/FT_01";
+		server = "jdbc:mysql://localhost/TF_01";
 		user   = "root";
 		pass   = "";//NO TIENE POR EL MOENTO
 		driver = "com.mysql.jdbc.Driver";
-	
 		
 		Connection conexion = null;
 		
@@ -36,9 +35,7 @@ public class ConexionPhpMyAdmin {
 			e.printStackTrace();
 		}
 		
-		return conexion;
-		
+		return conexion;		
 	}
 
-	
 }

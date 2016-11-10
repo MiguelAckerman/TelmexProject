@@ -7,22 +7,22 @@ public class Mensajes {
 	
 	public void mensajeOk(){
 		
-		JOptionPane.showMessageDialog(null, "Operación realizada con exito!", "OK", JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Operaciï¿½n realizada con exito!", "OK", JOptionPane.PLAIN_MESSAGE);
 	}
 	
 	public void mensajeError(){
 		
-		JOptionPane.showMessageDialog(null, "Algún error al procesar los datos", "Error", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Algï¿½n error al procesar los datos", "Error", JOptionPane.ERROR_MESSAGE);
 	}
 	
-	public void mensajeAtención(){
+	public void mensajeAtencion(){
 		
-		JOptionPane.showMessageDialog(null, "Asegurese de revisar los datos", "Atención", JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Asegurese de revisar los datos", "Atenciï¿½n", JOptionPane.WARNING_MESSAGE);
 	}
 	
 	public void mensajeNoDatos(){
 		
-		JOptionPane.showMessageDialog(null, "No existen datos con relación a la busqueda","", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, "No existen datos con relaciï¿½n a la busqueda","", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 }

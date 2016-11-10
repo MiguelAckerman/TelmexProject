@@ -9,6 +9,7 @@ public class Personal {
 	private String aPaterno; 
 	private String aMaterno; 
 	private String area;
+	private String codigo;
 	
 	public String getExp() {
 		return exp;
@@ -39,6 +40,12 @@ public class Personal {
 	}
 	public void setArea(String area) {
 		this.area = area;
+	}
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 	
 }
