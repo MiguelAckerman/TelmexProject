@@ -42,6 +42,32 @@ public class ModeloEquipo {
 	}//METOD PARA DAR DE ALTA UN EQUIPO
 	
 	
+	@SuppressWarnings({ "static-access", "unused" })
+	public int modificaEquipo(Equipo equipo){
+		x = 0;
+		
+		if(conexion != null){
+			
+			try {
+				
+				Statement modifica = conexion.getModeloConexion().createStatement();
+		
+				int m = modifica.executeUpdate("UPDATE EQUIPO SET tipoEquipo = '" +equipo.getTipo()+"', noSerieEquipo = '"+ equipo.getNoInventario() +"', marcaEquipo = '"+ equipo.getMarca() +"',"
+						+ " modeloEquipo = '" + equipo.getModelo() +"' WHERE noInventarioEquipo = " + equipo.getNoInventario());
+				
+				x = 1;
+				
+				return x;
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return x;
+	}//METODO PARA EDITAR UN EQUIPOS
+	
+	
 	
 	@SuppressWarnings("static-access")
 	public DefaultTableModel tablaCatEquipo()
@@ -132,7 +158,6 @@ public class ModeloEquipo {
 					datos[2]=rs.getString("noSerieEquipo");
 					datos[3]=rs.getString("marcaEquipo");
 					datos[4]=rs.getString("modeloEquipo");
-					//datos[6]=rs.getString("codigoDepartamento");
 					
 				}
 				return datos;

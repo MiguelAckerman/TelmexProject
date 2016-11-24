@@ -12,98 +12,95 @@ import POJO.Equipo;
 import Vista.VistaEquipo;
 
 public class ControladorEquipo implements ActionListener, MouseListener{
-
+	
 	private ModeloEquipo modEqui;
-	private VistaEquipo visEqui;
+	private VistaEquipo vsEquipo;
 	private Equipo equipo = new Equipo();
 	
-	public ControladorEquipo(ModeloEquipo modEqui, VistaEquipo visEqui){
+	public ControladorEquipo(ModeloEquipo modEqui, VistaEquipo vsEquipo){
+		this.vsEquipo = vsEquipo;
 		this.modEqui = modEqui;
-		this.visEqui = visEqui;
-		this.visEqui.tabla.setModel(modEqui.tablaCatEquipo());
 		ActionListener(this);
+		MouseListener(this);
 	}
-	
 
 	public void actionPerformed(ActionEvent evento) {
-	
-		if(evento.getSource().equals(visEqui.btnNuevo)){
+		
+		if(evento.getSource().equals(vsEquipo.agregarBtn)){
 			
-			equipo.setNoInventario(String.valueOf(visEqui.textinventario.getText()));
-			equipo.setTipo(String.valueOf(visEqui.texttipo.getText()));
-			equipo.setNoSerie(String.valueOf(visEqui.textserie.getText()));
-			equipo.setMarca(String.valueOf(visEqui.textmarca.getText()));
-			equipo.setModelo(String.valueOf(visEqui.textmodelo.getText()));
+			vsEquipo.noInventarioTxt.setEditable(false);
+			vsEquipo.noSerieTxt.setEditable(false);
+			vsEquipo.modeloTxt.setEditable(false);
+			vsEquipo.tipoCbx.setVisible(true);
+			vsEquipo.marcaCbx.setVisible(true);
 			
-			if (modEqui.agregarEquipo(equipo) == 1) {
-				JOptionPane.showMessageDialog(null, "Se agrego el Qeuipo con exito");
+			vsEquipo.lblMarca.setVisible(false);
+			vsEquipo.lblTipo.setVisible(false);
+			vsEquipo.marcaTxt.setVisible(false);
+			vsEquipo.tipoTxt.setVisible(false);
+			
+			//falta regla para validar vacios
+			
+			equipo.setNoInventario(String.valueOf(vsEquipo.noInventarioTxt.getText()));
+			equipo.setTipo(String.valueOf(vsEquipo.tipoCbx.getSelectedItem()));
+			equipo.setNoSerie(String.valueOf(vsEquipo.noSerieTxt.getText()));
+			equipo.setMarca(String.valueOf(vsEquipo.marcaCbx.getSelectedItem()));
+			equipo.setModelo(String.valueOf(vsEquipo.modeloTxt.getText()));
+			
+			if(modEqui.agregarEquipo(equipo) == 1){
 				
-				visEqui.textinventario.setText("");
-				visEqui.texttipo.setText("");
-				visEqui.textserie.setText("");
-				visEqui.textmarca.setText("");
-				visEqui.textmodelo.setText("");
-				visEqui.tabla.setModel(modEqui.tablaCatEquipo());	
+				vsEquipo.noInventarioTxt.setText("");
+				vsEquipo.noSerieTxt.setText("");
+				vsEquipo.modeloTxt.setText("");
+				
+				
+				vsEquipo.noInventarioTxt.setEditable(false);
+				vsEquipo.noSerieTxt.setEditable(false);
+				vsEquipo.modeloTxt.setEditable(false);
+				
+			} else {
+				JOptionPane.showMessageDialog(null, "Erro!, intenetelo más tarde");
 			}
 			
 		}
-		//TERMMINA EL BOTON DE AGREGAR
 		
-		if(evento.getSource().equals(visEqui.btnEditar)) {
+		if(evento.getSource().equals(vsEquipo.editarBtn)){
 			
 			
-			int filas = visEqui.tabla.getSelectedRow();
-			
-			if (filas > -1) {
-				
-				String valTab = String.valueOf(visEqui.tabla.getValueAt(filas, 0));
-				int valCon = Integer.parseInt(valTab);
-				
-				String datos [] = modEqui.consultaDatos(valCon);
-				
-				visEqui.textinventario.setText(datos[0]);
-				visEqui.texttipo.setText(datos[1]);
-				visEqui.textserie.setText(datos[2]);
-				visEqui.textmarca.setText(datos[3]);
-				visEqui.textmodelo.setText(datos[4]);
-				//visEqui.textcodigodepa.setText(datos[5]);
-				
-			}
-		}//BOTON DE EDITAR
+		}
 		
-		if(evento.getSource().equals(visEqui.btnEliminar)){
+		if(evento.getSource().equals(vsEquipo.aceptarBtn)){
 			
-			int filas = visEqui.tabla.getSelectedRow();
 			
-			if (filas > -1) {
-				
-				String valTab = String.valueOf(visEqui.tabla.getValueAt(filas, 0));
-				int valCon = Integer.parseInt(valTab);
-				
-				modEqui.eliminarEquipo(valCon);
-				visEqui.tabla.setModel(modEqui.tablaCatEquipo());
-				
-			}
+		}
+		
+		if(evento.getSource().equals(vsEquipo.cancelarBtn)){
+			
+			vsEquipo.noInventarioTxt.setText("");
+			vsEquipo.noSerieTxt.setText("");
+			vsEquipo.modeloTxt.setText("");
+			
+			vsEquipo.noInventarioTxt.setEditable(false);
+			vsEquipo.noSerieTxt.setEditable(false);
+			vsEquipo.modeloTxt.setEditable(false);
+			
+			
+			//falta ver la regla para cuanod cambie de editar a modo normal
 		}
 		
 	}
 	
-	private void ActionListener(ControladorEquipo atiendePress) {
+	private void ActionListener(ControladorEquipo atiende) {
 		
-		visEqui.btnNuevo.addActionListener(atiendePress);
-		visEqui.btnEditar.addActionListener(atiendePress);
-		visEqui.btnEliminar.addActionListener(atiendePress);
+	}
+	
+	private void MouseListener(ControladorEquipo atiendeTabla) {
 		
 	}
 
-
-	//este es el que vamos a usar
-	public void mouseClicked(MouseEvent clickMause) {
-		
-		
+	public void mouseClicked(MouseEvent click) {
 		
 	}
-
 
 	public void mousePressed(MouseEvent e) {
 		
@@ -117,8 +114,9 @@ public class ControladorEquipo implements ActionListener, MouseListener{
 		
 	}
 
-	public void mouseExited(MouseEvent e) {
-	
-	}
 
+	public void mouseExited(MouseEvent e) {
+		
+	}
+	
 }

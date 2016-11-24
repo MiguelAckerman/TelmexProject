@@ -1,5 +1,6 @@
 package Vista;
-import javax.swing.JButton;
+
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -9,99 +10,63 @@ import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
 
-@SuppressWarnings("serial")
-public class VistaEquipo extends JFrame{
-    
-    public JFrame ventana;
-    public JLabel noinventario,noserie, tipo, marca, modelo;
-    public JPanel panel, panelTabla;
+public class VistaEquipo {
+
+	public JFrame Ventana;
+	public JPanel panelTabla;
     public JScrollPane scrll;
     public JTable tabla;
-    public JButton btnEditar, btnEliminar, btnNuevo;
-    public JTextField textinventario;
-    public JTextField textserie;
-    public JTextField textmodelo;
-    public JTextField textmarca;
-    public JTextField texttipo;
     
-    public VistaEquipo(){
-        
-        
-        ventana        = new JFrame();
-        noinventario   = new JLabel("No. Inventario");
-        noserie        = new JLabel("No. Serie");
-        tipo           = new JLabel("Tipo");
-        marca          = new JLabel("Marca");
-        modelo         = new JLabel("Modelo");
-        
-        panel       = new JPanel();
+    private JLabel lblNoInventario;
+    private JLabel lblNoSerie;
+    private JLabel lblModelo;
+    public JTextField noInventarioTxt;
+    public JTextField noSerieTxt;
+    public JTextField modeloTxt;
+    public JComboBox tipoCbx;
+    public JComboBox marcaCbx;
+    public JButton agregarBtn;
+    public JButton cancelarBtn;
+    public JButton editarBtn;
+    public JButton aceptarBtn;
+    public JTextField marcaTxt;
+    public JTextField tipoTxt;
+    public JLabel lblTipo;
+    public JLabel lblMarca;
+    
+	
+	public VistaEquipo() {
+		
         panelTabla  = new JPanel();
         tabla       = new JTable();
-        
         scrll       = new JScrollPane(tabla);
+		
+        String tipo [] = {
+        	"Teclado",
+        	"Mause",
+        	"Monitor",
+        	"CPU",
+        	"Cableado",
+        };
         
-        btnEditar   = new JButton("Editar");
-        btnEliminar = new JButton("Eliminar");
-        btnNuevo    = new JButton("Nuevo");
+        String marca [] = {
+        	"HP",
+        	"SONY",
+        	"Lenovo",
+        	"Logitech",
+        };
         
-        ventana.getContentPane().setLayout(null);
-        ventana.setSize(640, 366);
-        ventana.setLocationRelativeTo(null);
-        ventana.setResizable(false);
-        ventana.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        ventana.setTitle("Equipo");
-        
-        panel.setLayout(null);
-        panel.setBounds(5, 172, 500, 139);
-        panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Registro Equipo", TitledBorder.CENTER, TitledBorder.TOP, null, null));
-        
-        noinventario.setBounds(10, 20, 73, 30);
-        panel.add(noinventario);
-        
-        noserie.setBounds(196, 20, 54, 30);
-        panel.add(noserie);
-        
-        tipo.setBounds(368, 20, 29, 30);
-        panel.add(tipo);
-        
-        marca.setBounds(196, 68, 37, 30);
-        panel.add(marca);
-        
-        modelo.setBounds(10, 68, 54, 30);
-        panel.add(modelo);
-        
-        ventana.getContentPane().add(panel);
-        
-        textinventario = new JTextField();
-        textinventario.setBounds(84, 25, 102, 20);
-        panel.add(textinventario);
-        textinventario.setColumns(10);
-        
-        textserie = new JTextField();
-        textserie.setBounds(250, 25, 108, 20);
-        panel.add(textserie);
-        textserie.setColumns(10);
-        
-        textmodelo = new JTextField();
-        textmodelo.setBounds(51, 73, 116, 20);
-        panel.add(textmodelo);
-        textmodelo.setColumns(10);
-        
-        textmarca = new JTextField();
-        textmarca.setText("");
-        textmarca.setBounds(243, 73, 115, 20);
-        panel.add(textmarca);
-        textmarca.setColumns(10);
-        
-        texttipo = new JTextField();
-        texttipo.setText("");
-        texttipo.setBounds(390, 25, 86, 20);
-        panel.add(texttipo);
-        texttipo.setColumns(10);
-        //TERMINA PANEL DE EQUIPO
-        
-        tabla.setModel(new DefaultTableModel
+		Ventana = new JFrame();
+		Ventana.setBounds(100, 100, 666, 424);
+		Ventana.setLocationRelativeTo(null);
+		Ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Ventana.getContentPane().setLayout(null);
+		Ventana.setResizable(false);
+		
+		tabla.setModel(new DefaultTableModel
                 (
                         new Object[][]
                             {
@@ -112,24 +77,93 @@ public class VistaEquipo extends JFrame{
                                 "No. Inventario","No. Serie","Tipo","Marca","Modelo"
                             }
                     ));
-        scrll.setBounds(10,20,480,120);
+        scrll.setBounds(6,24,643,120);
         
         panelTabla.setLayout(null);
-        panelTabla.setBounds(5, 11, 500, 150);
-        panelTabla.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Busq	ueda de Equipo", TitledBorder.CENTER, TitledBorder.TOP, null, null));
+        panelTabla.setBounds(5, 11, 655, 150);
+        panelTabla.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Equipo", TitledBorder.LEFT, TitledBorder.TOP, null, null));
         panelTabla.add(scrll);
-        ventana.getContentPane().add(panelTabla);
+        Ventana.getContentPane().add(panelTabla);
         
-        btnEditar.setBounds(520, 140, 100, 30);
-        ventana.getContentPane().add(btnEditar);
+        lblNoInventario = new JLabel("No. inventario");
+        lblNoInventario.setBounds(5, 185, 100, 16);
+        Ventana.getContentPane().add(lblNoInventario);
         
-        btnEliminar.setBounds(520, 190, 100, 30);
-        ventana.getContentPane().add(btnEliminar);
+        noInventarioTxt = new JTextField();
+        noInventarioTxt.setEditable(false);
+        noInventarioTxt.setBounds(117, 180, 130, 26);
+        Ventana.getContentPane().add(noInventarioTxt);
         
-        btnNuevo.setBounds(520, 240, 100, 30);
-        ventana.getContentPane().add(btnNuevo);
+        lblNoSerie = new JLabel("No. Serie");
+        lblNoSerie.setBounds(274, 185, 61, 16);
+        Ventana.getContentPane().add(lblNoSerie);
         
-        ventana.setVisible(true);
-    }
-
+        noSerieTxt = new JTextField();
+        noSerieTxt.setEditable(false);
+        noSerieTxt.setBounds(347, 180, 130, 26);
+        Ventana.getContentPane().add(noSerieTxt);
+        
+        tipoCbx = new JComboBox(tipo);
+        tipoCbx.setBounds(499, 181, 161, 27);
+        tipoCbx.setVisible(false);
+        Ventana.getContentPane().add(tipoCbx);
+        
+        lblModelo = new JLabel("Modelo");
+        lblModelo.setBounds(6, 228, 61, 16);
+        Ventana.getContentPane().add(lblModelo);
+        
+        modeloTxt = new JTextField();
+        modeloTxt.setEditable(false);
+        modeloTxt.setBounds(117, 223, 130, 26);
+        Ventana.getContentPane().add(modeloTxt);
+        
+        marcaCbx = new JComboBox(marca);
+        marcaCbx.setBounds(274, 224, 161, 27);
+        marcaCbx.setVisible(false);
+        Ventana.getContentPane().add(marcaCbx);
+        
+        agregarBtn = new JButton("Agregar");
+        agregarBtn.setBounds(543, 296, 117, 29);
+        Ventana.getContentPane().add(agregarBtn);
+        
+        cancelarBtn = new JButton("Cancelar");
+        cancelarBtn.setBounds(5, 296, 117, 29);
+        Ventana.getContentPane().add(cancelarBtn);
+        
+        editarBtn = new JButton("Editar");
+        editarBtn.setBounds(414, 296, 117, 29);
+        Ventana.getContentPane().add(editarBtn);
+        
+        aceptarBtn = new JButton("Aceptar");
+        aceptarBtn.setBounds(285, 296, 117, 29);
+        aceptarBtn.setVisible(false);
+        Ventana.getContentPane().add(aceptarBtn);
+        
+        marcaTxt = new JTextField();
+        marcaTxt.setEditable(false);
+        marcaTxt.setVisible(true);
+        marcaTxt.setBounds(347, 223, 130, 26);
+        Ventana.getContentPane().add(marcaTxt);
+        marcaTxt.setColumns(10);
+        
+        tipoTxt = new JTextField();
+        tipoTxt.setEditable(false);
+        tipoTxt.setVisible(true);
+        tipoTxt.setBounds(530, 180, 130, 26);
+        Ventana.getContentPane().add(tipoTxt);
+        tipoTxt.setColumns(10);
+        
+        lblTipo = new JLabel("Tipo");
+        lblTipo.setBounds(489, 185, 61, 16);
+        lblTipo.setVisible(true);
+        Ventana.getContentPane().add(lblTipo);
+        
+        lblMarca = new JLabel("Marca");
+        lblMarca.setBounds(274, 228, 61, 16);
+        lblMarca.setVisible(true);
+        Ventana.getContentPane().add(lblMarca);
+        
+		
+		Ventana.setVisible(true);
+	}
 }
